@@ -11,14 +11,6 @@ function RepeatButton(props) {
   );
 }
 
-function WinningSound() {
-  return (
-  <audio autoPlay="autoplay" className="player" preload="false">
-    <source src="https://andyhoffman.codes/random-assets/img/slots/winning_slot.wav" />
-  </audio>
-  );
-}
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -73,19 +65,13 @@ class App extends React.Component {
       return App.loser[Math.floor(Math.random()*App.loser.length)]
     }
     let repeatButton = null;
-    let winningSound = null;
 
     if (winner !== null) {
       repeatButton = <RepeatButton onClick={this.handleClick} />
     }
 
-    if (winner) {
-      winningSound = <WinningSound />
-    }
-
     return (
       <div>
-        {winningSound}
         <h1 style={{ color: 'white'}}>
           <span>{winner === null ? 'Waiting…' : winner ? '🤑 Pure skill! 🤑' : getLoser()}</span>
         </h1>
